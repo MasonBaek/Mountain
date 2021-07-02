@@ -2,7 +2,7 @@
 <h3>html</h3>
 
 > &lt;div class='no-drag'&gt; <br/>
->  드래그 방지 CSS. &lt;br&gt; <br/>
+>  드래그 방지 CSS. <br/>
 > &lt;/div&gt;
 
 <h3>css</h3>
