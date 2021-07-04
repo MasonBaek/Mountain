@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> &#127748; »ê </title>
+<title> &#127748; ì‚° </title>
 <link href="css/mountain.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -28,7 +28,7 @@ function on_mouse_move(e) {
  if (isEnable) {
   pos = event.clientX;
   diffpos = startpos-pos;
-  var width = window.contents.innerWidth/2;
+  var width = window.innerWidth/2;
   if (diffpos > -(width-range) && diffpos < (width-range)) {
    document.getElementById("left_map").style.width = width - diffpos + "px";
    document.getElementById("timeLine").style.width = width -20 + diffpos + "px"; 
@@ -50,19 +50,15 @@ function init() {
 	 	<div class="head_right" style="border:none;">
 	 		
 	 		<div id="search_con">
-				<input type="text" id="search_text" placeholder="°Ë»ö¾îÀÔ·Â">
-				<input type="button" id="search_btn" value="°Ë»ö">
+				<input type="text" id="search_text" placeholder="ê²€ìƒ‰ì–´ì…ë ¥">
+				<input type="button" id="search_btn" value="ê²€ìƒ‰">
 			</div>
 	 		
 	 		<%if(id==null) {%>
 	 		<div id="login_insert">
-				<button type="button" name="login" id="login">·Î±×ÀÎ</button>
-				<script type="text/javascript">
-					$('#login').click(function() {
-						$('article').load('loginForm.jsp')
-					});
-				</script>	
-				<button type="button" name="insert" id="insert">È¸¿ø°¡ÀÔ</button>
+				<button type="button" name="login" id="login">ë¡œê·¸ì¸</button>
+					
+				<button type="button" name="insert" id="insert">íšŒì›ê°€ì…</button>
 			</div>
 	 		<%} else {%>
 				<%--<jsp:include page="welcome.jsp"/> --%>
