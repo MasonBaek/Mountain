@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	
+	<title>CSS3 User Interface</title>
+	<style>
+		div {
+			border: 3px solid orange;
+			margin: 10px;
+			padding: 20px;
+			width: 300px;
+			overflow: auto;
+		}
+		#width { resize: horizontal; }
+		#height { resize: vertical; }
+		#both { resize: both; }
+	</style>
+</head>
+
+<body>
+
+	<h1>resize 속성을 이용한 크기 조절</h1>
+	<p>각 div 요소의 오른쪽 하단에 있는 크기 조절 핸들을 마우스로 드래그해서 요소의 크기를 조절할 수 있습니다.</p>
+	<div id="width">이 요소는 너비만 조절할 수 있어요!</div>
+	<div id="height">이 요소는 높이만 조절할 수 있어요!</div>
+	<div id="both">이 요소는 둘 다 조절할 수 있어요!</div>
+
+</body>
+
+</html>
+ 
