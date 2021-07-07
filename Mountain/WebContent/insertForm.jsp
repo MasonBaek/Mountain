@@ -149,14 +149,13 @@ input[type=password] not:placeholder {
 	
 	<div class="container_etc" style="background-color:#f1f1f1">
     	<div class="back">
-            <div class="button_base insert_button" onsubmit="">회원가입</div>
+            <input type="submit" class="button_base insert_button" value="회원가입">
         </div>
         <div class="back">
             <div class="button_base cancel_button" onclick="location.href='index.jsp'">취소</div>
         </div>
 	</div>
 </form>
-	
 	
 </body>
 </html>
