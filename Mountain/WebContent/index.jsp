@@ -6,7 +6,7 @@
 <title> &#127748; 산 </title>
 <link href="css/mountain.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap" rel="stylesheet">
 <script src="../js/jquery-3.6.0.js"></script>
 <%
@@ -69,7 +69,7 @@ function init() {
 	</header>
 	<article>
 	<div id="contents">
-		<div id="left_map"><jsp:include page="map.jsp"/></div>
+		<div id="left_map"><jsp:include page="map3.jsp"/></div>
 		<div id="vertical_line"></div>
 		<div id="timeLine"><jsp:include page="timeLine.jsp"/></div>
 	</div>
