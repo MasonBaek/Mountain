@@ -34,7 +34,7 @@ E-커머스<br>
 
 int mem_num  
 String id  
-String nickname  
+<s>String nickname</s>  
 String pass  
 String name  
 String address  
