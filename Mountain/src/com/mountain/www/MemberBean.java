@@ -4,22 +4,25 @@ import java.sql.Timestamp;
 
 public class MemberBean {
 	
-	private int num;
+	private int member_num;
 	private String id;
 	private String pass;
 	private String email;
 	private String address;
+	
 	private double sw;
 	private double ne;
 	private String gender;
 	private String fab_mt;
 	private Timestamp reg_date;
-
-	public int getNum() {
-		return num;
+	
+	
+	
+	public int getMember_num() {
+		return member_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setMember_num(int member_num) {
+		this.member_num = member_num;
 	}
 	public String getId() {
 		return id;
@@ -77,7 +80,7 @@ public class MemberBean {
 	}
 	@Override
 	public String toString() {
-		return "MemberBean [num=" + num + ", id=" + id + ", pass=" + pass + ", email=" + email + ", address=" + address
+		return "MemberBean [member_num=" + member_num + ", id=" + id + ", pass=" + pass + ", email=" + email + ", address=" + address
 				+ ", sw=" + sw + ", ne=" + ne + ", gender=" + gender + ", fab_mt=" + fab_mt + ", reg_date=" + reg_date
 				+ "]";
 	}
