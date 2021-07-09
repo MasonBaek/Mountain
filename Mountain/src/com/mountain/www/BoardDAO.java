@@ -36,25 +36,25 @@ public class BoardDAO {
 		}
 	}
 	public void insertBoard(BoardBean bb) {
-		int num = 0;
+		int board_num = 0;
 		try {	
 			Connection con = getCon();
-			String sql = "select max(num) from mountain_board";
+			String sql = "select max(board_num) from mountain_board";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()){
-				num = rs.getInt(1)+1;
+				board_num = rs.getInt(1)+1;
 			}
-			System.out.println("DAO : 글번호 : "+num);
-			sql = "insert into mountain_board (num, name,pass,subject,content,"
+			System.out.println("DAO : 글번호 : "+board_num);
+			sql = "insert into mountain_board (board_num, name,pass,subject,content,"
 					+"readcount,re_ref,re_lev,re_seq,date,ip,file)"
 					+"values(?,?,?,?,?,?,?,?,?,?,?,now())";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, board_num);
 			pstmt.setString(2, bb.getSubject());
 			pstmt.setString(3, bb.getContent());
 			pstmt.setInt(4, 0); // 조회수 0
-			pstmt.setInt(5, num); // re_ref 답글 그룹번호 / 일반글번호 == 그룹번호
+			pstmt.setInt(5, board_num); // re_ref 답글 그룹번호 / 일반글번호 == 그룹번호
 			pstmt.setInt(6, 0);  // re_lev 답글 들여쓰기 / 일반글 들여쓰기없음(0)
 			pstmt.setInt(7, 0); // re_seq 답글 순서 / 일반글 0
 			pstmt.setString(8, bb.getIp());
@@ -82,7 +82,7 @@ public class BoardDAO {
 		try {
 			con = getCon();
 			
-			sql = "select count(num) from mountain_board";
+			sql = "select count(board_num) from mountain_board";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -115,7 +115,7 @@ public class BoardDAO {
 				bb.setFile(rs.getString("file"));
 				bb.setIp(rs.getString("ip"));
 				bb.setId(rs.getString("id"));
-				bb.setNum(rs.getInt("num"));
+				bb.setBoard_num(rs.getInt("board_num"));
 				bb.setRe_lev(rs.getInt("re_lev"));
 				bb.setRe_ref(rs.getInt("re_ref"));
 				bb.setRe_seq(rs.getInt("re_seq"));
@@ -151,7 +151,7 @@ public class BoardDAO {
 				bb.setFile(rs.getString("file"));
 				bb.setIp(rs.getString("ip"));
 				bb.setId(rs.getString("id"));
-				bb.setNum(rs.getInt("num"));
+				bb.setBoard_num(rs.getInt("board_num"));
 				bb.setRe_lev(rs.getInt("re_lev"));
 				bb.setRe_ref(rs.getInt("re_ref"));
 				bb.setRe_seq(rs.getInt("re_seq"));
@@ -170,13 +170,13 @@ public class BoardDAO {
 	}
 	// getBoardList(startRow, pageSize)
 	
-	// updateReadcount(num)
-		public void updateReadcount(int num){
+	// updateReadcount(board_num)
+		public void updateReadcount(int board_num){
 			try {
 				con = getCon();
-				sql = "update mountain_board set readcount=readcount+1 where num=?";
+				sql = "update mountain_board set readcount=readcount+1 where board_num=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, num);
+				pstmt.setInt(1, board_num);
 				pstmt.executeUpdate();
 				System.out.println("DAO : 글 조회수 1증가 완료");
 		} catch (Exception e) {
@@ -185,16 +185,16 @@ public class BoardDAO {
 			closeDB();
 		}
 	}
-	// updateReadcount(num)
-	// getBoard(num)
-		public BoardBean getBoard(int num){
+	// updateReadcount(board_num)
+	// getBoard(board_num)
+		public BoardBean getBoard(int board_num){
 			BoardBean bb = null;
 			try {
 				con = getCon();
 				sql = "select * from mountain_board "
-						+ "where num=?";
+						+ "where board_num=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, num);
+				pstmt.setInt(1, board_num);
 				rs = pstmt.executeQuery();
 				if(rs.next()){
 					bb = new BoardBean();
@@ -203,7 +203,7 @@ public class BoardDAO {
 					bb.setFile(rs.getString("file"));
 					bb.setIp(rs.getString("ip"));
 					bb.setId(rs.getString("id"));
-					bb.setNum(rs.getInt("num"));
+					bb.setBoard_num(rs.getInt("board_num"));
 					bb.setRe_lev(rs.getInt("re_lev"));
 					bb.setRe_ref(rs.getInt("re_ref"));
 					bb.setRe_seq(rs.getInt("re_seq"));
@@ -218,25 +218,25 @@ public class BoardDAO {
 			}
 			return bb;
 		}
-	// getBoard(num)
+	// getBoard(board_num)
 	// updateBoard(bb)
 		public boolean updateBoard(BoardBean bb){
 			boolean check = false ;
 			try {
 				con = getCon();
 				sql = "select id from mountain_board "
-						+ "where num=?";
+						+ "where board_num=?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, bb.getId());
 				rs = pstmt.executeQuery();
 				if(rs.next()){
 					if(bb.getId().equals(rs.getString("id"))){
 						sql = "update mountain_board set subject=?, content=? "
-								+ "where num=?";
+								+ "where board_num=?";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, bb.getSubject());
 						pstmt.setString(2, bb.getContent());
-						pstmt.setInt(3, bb.getNum());
+						pstmt.setInt(3, bb.getBoard_num());
 						pstmt.executeUpdate();
 						check = true;
 						System.out.println("DAO : 글 수정 완료");
@@ -254,19 +254,19 @@ public class BoardDAO {
 		}
 	// updateBoard(bb);
 	// deleteBoard(bb)
-		public int deleteBoard(int num , String pass){
+		public int deleteBoard(int board_num , String pass){
 			int check = -1 ;
 			try {
 				con = getCon();
-				sql = "select pass from mountain_board where num=?";
+				sql = "select pass from mountain_board where board_num=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, num);
+				pstmt.setInt(1, board_num);
 				rs = pstmt.executeQuery();
 				if(rs.next()){
 					if(pass.equals(rs.getString("pass"))){
-						sql = "delete from mountain_board where num=?";
+						sql = "delete from mountain_board where board_num=?";
 						pstmt = con.prepareStatement(sql);
-						pstmt.setInt(1, num);
+						pstmt.setInt(1, board_num);
 						pstmt.executeUpdate();
 						check = 1;
 						System.out.println("DAO : 글 삭제 완료");
@@ -289,16 +289,16 @@ public class BoardDAO {
 	// deleteBoard(bb)
 	// reWriteBoard(bb)
 		public void reInsertBoard(BoardBean bb){
-			int num = 0;
+			int board_num = 0;
 			try {
 				con = getCon();
-				sql = "select max(num) from mountain_board";
+				sql = "select max(board_num) from mountain_board";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				if(rs.next()){
-					num = rs.getInt(1)+1;
+					board_num = rs.getInt(1)+1;
 				}
-				System.out.println("DAO : 답글 번호 계산" + num);
+				System.out.println("DAO : 답글 번호 계산" + board_num);
 				////답글 순서 재배치
 				sql = "update mountain_board set re_seq = (re_seq + 1) "
 						+ "where re_ref=? and re_seq>?";
@@ -311,7 +311,7 @@ public class BoardDAO {
 						+ "?,?,?,?,now(),"
 						+ "?,?)";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, num);
+				pstmt.setInt(1, board_num);
 				pstmt.setString(2, bb.getId());
 				pstmt.setString(3, bb.getSubject());
 				pstmt.setString(4, bb.getContent());

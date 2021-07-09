@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class BoardBean {
 	
-	private int num;
+	private int board_num;
 	private String id;
 	private String subject;
 	private String content;
@@ -23,11 +23,11 @@ public class BoardBean {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
-	public int getNum() {
-		return num;
+	public int getBoard_num() {
+		return board_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setBoard_num(int num) {
+		this.board_num = num;
 	}
 	public String getId() {
 		return id;
@@ -86,7 +86,7 @@ public class BoardBean {
 	
 	@Override
 	public String toString() {
-		return "BoardBean [num=" + num + ", id=" + id + ", subject=" + subject + ", content=" + content + ", readcount="
+		return "BoardBean [num=" + board_num + ", id=" + id + ", subject=" + subject + ", content=" + content + ", readcount="
 				+ readcount + ", re_ref=" + re_ref + ", re_lev=" + re_lev + ", re_seq=" + re_seq + ", write_date="
 				+ write_date + ", ip=" + ip + ", file=" + file + "]";
 	}
