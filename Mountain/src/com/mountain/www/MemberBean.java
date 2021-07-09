@@ -1,7 +1,6 @@
 package com.mountain.board;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class MemberBean {
 	
@@ -15,6 +14,7 @@ public class MemberBean {
 	private String gender;
 	private String fab_mt;
 	private Timestamp reg_date;
+
 	public int getNum() {
 		return num;
 	}
