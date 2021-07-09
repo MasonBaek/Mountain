@@ -32,21 +32,22 @@ E-커머스<br>
 
 > table mountain_member  
 
-int mem_num  
+int num  
 String id  
 <s>String nickname</s>  
 String pass  
-String name  
-String address  
-double addr_nw  
-double addr_se  
 String email  
+String address  
+double addr_sw  
+double addr_ne  
 String gender  
 String fab_mt  
+String Timestamp reg_date  
+
 
 > table mountain_board  
 
-int num  
+int board_num  
 String id  
 String subject  
 String content  
@@ -54,9 +55,9 @@ int readcount
 int re_ref  
 int re_lev  
 int re_seq  
-Timestamp reg_date  
+Timestamp write_date  
 int ip  
-file img  
+String file    
 
 > ### [2.0 Timeline]  ===
 
